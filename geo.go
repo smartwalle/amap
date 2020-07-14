@@ -34,6 +34,7 @@ func (this *Client) ReGeo(longitude, latitude string) (result *ReGeo, err error)
 	var req = ngx.NewRequest(ngx.Get, api)
 	req.AddParam("key", this.key)
 	req.AddParam("location", fmt.Sprintf("%s,%s", longitude, latitude))
+	req.AddParam("extensions", "all")
 
 	var rsp = req.Exec()
 	if rsp.Error() != nil {

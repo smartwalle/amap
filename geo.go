@@ -1,6 +1,7 @@
-package amap4go
+package amap
 
 import (
+	"context"
 	"fmt"
 	"github.com/smartwalle/ngx"
 )
@@ -18,7 +19,7 @@ func (this *Client) Geo(city, address string) (result *Geo, err error) {
 	req.AddParam("city", city)
 	req.AddParam("address", address)
 
-	var rsp = req.Exec()
+	var rsp = req.Exec(context.Background())
 	if rsp.Error() != nil {
 		return nil, err
 	}
@@ -36,7 +37,7 @@ func (this *Client) ReGeo(longitude, latitude string) (result *ReGeo, err error)
 	req.AddParam("location", fmt.Sprintf("%s,%s", longitude, latitude))
 	req.AddParam("extensions", "all")
 
-	var rsp = req.Exec()
+	var rsp = req.Exec(context.Background())
 	if rsp.Error() != nil {
 		return nil, err
 	}

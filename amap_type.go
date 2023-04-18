@@ -1,4 +1,4 @@
-package amap4go
+package amap
 
 const (
 	kAPIDomain = "https://restapi.amap.com/v3"

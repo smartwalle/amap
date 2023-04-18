@@ -1,4 +1,4 @@
-package amap4go
+package amap
 
 type GeoCode struct {
 	FormattedAddress String        `json:"formatted_address"`

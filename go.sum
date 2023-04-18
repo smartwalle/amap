@@ -1,2 +1,6 @@
 github.com/smartwalle/ngx v1.0.2 h1:glbgNRSl8aAjyLGryfwlH+y6DQd42o23SRO/fdWHvVg=
 github.com/smartwalle/ngx v1.0.2/go.mod h1:ml3CEnDnA94rNqRC9/lbflZNevlW+Cbgv6Gp8WDy6AU=
+github.com/smartwalle/ngx v1.0.5 h1:L31bGSybA/h9jh2/Aj6+oqjgKl4PU5Vzt6Kh+ewCEqI=
+github.com/smartwalle/ngx v1.0.5/go.mod h1:mx/nz2Pk5j+RBs7t6u6k22MPiBG/8CtOMpCnALIG8Y0=
+github.com/smartwalle/ngx v1.0.6 h1:JPNqNOIj+2nxxFtrSkJO+vKJfeNUSEQueck/Wworjps=
+github.com/smartwalle/ngx v1.0.6/go.mod h1:mx/nz2Pk5j+RBs7t6u6k22MPiBG/8CtOMpCnALIG8Y0=

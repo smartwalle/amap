@@ -1,9 +1,5 @@
 package amap
 
-const (
-	kAPIDomain = "https://restapi.amap.com/v3"
-)
-
 type Error struct {
 	Status   string `json:"status"`
 	Info     string `json:"info"`

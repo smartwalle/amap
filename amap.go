@@ -1,5 +1,9 @@
 package amap
 
+const (
+	kAMapURL = "https://restapi.amap.com/v3"
+)
+
 type Client struct {
 	key       string
 	apiDomain string
@@ -8,6 +12,6 @@ type Client struct {
 func New(key string) *Client {
 	var c = &Client{}
 	c.key = key
-	c.apiDomain = kAPIDomain
+	c.apiDomain = kAMapURL
 	return c
 }

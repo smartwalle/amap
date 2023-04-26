@@ -13,7 +13,7 @@ const (
 
 // Geo 地理编码 https://lbs.amap.com/api/webservice/guide/api/georegeo#geo
 func (this *Client) Geo(city, address string) (result *Geo, err error) {
-	var api = fmt.Sprintf("%s/%s", this.apiDomain, kGeo)
+	var api = fmt.Sprintf("%s/%s", this.host, kGeo)
 	var req = ngx.NewRequest(ngx.Get, api, ngx.WithClient(this.Client))
 	req.AddParam("key", this.key)
 	req.AddParam("city", city)
@@ -31,7 +31,7 @@ func (this *Client) Geo(city, address string) (result *Geo, err error) {
 
 // ReGeo 逆地理编码 https://lbs.amap.com/api/webservice/guide/api/georegeo#regeo
 func (this *Client) ReGeo(longitude, latitude string) (result *ReGeo, err error) {
-	var api = fmt.Sprintf("%s/%s", this.apiDomain, kReGeo)
+	var api = fmt.Sprintf("%s/%s", this.host, kReGeo)
 	var req = ngx.NewRequest(ngx.Get, api, ngx.WithClient(this.Client))
 	req.AddParam("key", this.key)
 	req.AddParam("location", fmt.Sprintf("%s,%s", longitude, latitude))

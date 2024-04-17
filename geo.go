@@ -2,47 +2,34 @@ package amap
 
 import (
 	"context"
-	"fmt"
-	"github.com/smartwalle/ngx"
+	"net/url"
+	"strings"
 )
 
 const (
-	kGeo   = "geocode/geo"
-	kReGeo = "geocode/regeo"
+	kGeo   = "v3/geocode/geo"
+	kReGeo = "v3/geocode/regeo"
 )
 
 // Geo 地理编码 https://lbs.amap.com/api/webservice/guide/api/georegeo#geo
-func (this *Client) Geo(city, address string) (result *Geo, err error) {
-	var api = fmt.Sprintf("%s/%s", this.host, kGeo)
-	var req = ngx.NewRequest(ngx.Get, api, ngx.WithClient(this.Client))
-	req.AddParam("key", this.key)
-	req.AddParam("city", city)
-	req.AddParam("address", address)
+func (client *Client) Geo(ctx context.Context, city, address string) (result *Geo, err error) {
+	var param = url.Values{}
+	param.Add("city", city)
+	param.Add("address", address)
 
-	var rsp = req.Exec(context.Background())
-	if rsp.Error() != nil {
-		return nil, err
-	}
-	if err = rsp.UnmarshalJSON(&result); err != nil {
+	if err = client.request(ctx, kGeo, param, &result); err != nil {
 		return nil, err
 	}
 	return result, nil
 }
 
 // ReGeo 逆地理编码 https://lbs.amap.com/api/webservice/guide/api/georegeo#regeo
-func (this *Client) ReGeo(longitude, latitude string) (result *ReGeo, err error) {
-	var api = fmt.Sprintf("%s/%s", this.host, kReGeo)
-	var req = ngx.NewRequest(ngx.Get, api, ngx.WithClient(this.Client))
-	req.AddParam("key", this.key)
-	req.AddParam("location", fmt.Sprintf("%s,%s", longitude, latitude))
-	req.AddParam("extensions", "all")
+func (client *Client) ReGeo(ctx context.Context, longitude, latitude string) (result *ReGeo, err error) {
+	var param = url.Values{}
+	param.Add("location", strings.Join([]string{longitude, latitude}, ","))
+	param.Add("extensions", "all")
 
-	var rsp = req.Exec(context.Background())
-	if rsp.Error() != nil {
-		return nil, err
-	}
-
-	if err = rsp.UnmarshalJSON(&result); err != nil {
+	if err = client.request(ctx, kReGeo, param, &result); err != nil {
 		return nil, err
 	}
 	return result, nil

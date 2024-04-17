@@ -80,19 +80,68 @@ type Road struct {
 }
 
 type POI struct {
-	Id        String `json:"id"`
-	Direction String `json:"direction"`
-	//BusinessAreas []*BusinessArea `json:"businessAreas"`
-	Address   String `json:"address"`
-	PoiWeight String `json:"poiweight"`
-	Name      String `json:"name"`
-	Location  String `json:"location"`
-	Distance  String `json:"distance"`
-	Tel       String `json:"tel"`
-	Type      String `json:"type"`
+	Id           String        `json:"id"`
+	Parent       String        `json:"parent"`
+	ChildType    String        `json:"childtype"`
+	Name         String        `json:"name"`
+	Tag          String        `json:"tag"`
+	Type         String        `json:"type"`
+	TypeCode     String        `json:"typecode"`
+	BizType      String        `json:"biz_type"`
+	Address      String        `json:"address"`
+	Location     String        `json:"location"`
+	Tel          String        `json:"tel"`
+	Postcode     String        `json:"postcode"`
+	Website      String        `json:"website"`
+	Email        String        `json:"email"`
+	PCode        String        `json:"pcode"`
+	PName        String        `json:"pname"`
+	CityCode     String        `json:"citycode"`
+	CityName     String        `json:"cityname"`
+	AdCode       String        `json:"adcode"`
+	AdName       String        `json:"adname"`
+	Importance   String        `json:"importance"`
+	ShopId       String        `json:"shopid"`
+	ShopInfo     String        `json:"shopinfo"`
+	POIWeight    String        `json:"poiweight"`
+	GridCode     String        `json:"gridcode"`
+	Distance     String        `json:"distance"`
+	NaviPOIId    String        `json:"navi_poiid"`
+	EntrLocation String        `json:"entr_location"`
+	BusinessArea String        `json:"business_area"`
+	ExitLocation String        `json:"exit_location"`
+	Match        String        `json:"match"`
+	Recommend    String        `json:"recommend"`
+	Timestamp    String        `json:"timestamp"`
+	Alias        String        `json:"alias"`
+	IndoorMap    String        `json:"indoor_map"`
+	IndoorData   Indoor        `json:"indoor_data"`
+	GroupBuyNum  String        `json:"groupbuy_num"`
+	DiscountNum  String        `json:"discount_num"`
+	BizExt       BizExt        `json:"biz_ext"`
+	Event        []interface{} `json:"event"`
+	Children     []interface{} `json:"children"`
+	Photos       []Photo       `json:"photos"`
+}
+
+type Indoor struct {
+	Cpid      String `json:"cpid"`
+	Floor     String `json:"floor"`
+	Truefloor String `json:"truefloor"`
+	Cmsid     String `json:"cmsid"`
+}
+
+type BizExt struct {
+	Rating String `json:"rating"`
+	Cost   String `json:"cost"`
+}
+
+type Photo struct {
+	Title String `json:"title"`
+	URL   String `json:"url"`
 }
 
 type ReGeo struct {
 	Error
-	ReGeoCode *ReGeoCode
+	ReGeoCode *ReGeoCode `json:"regeocode"`
 }
